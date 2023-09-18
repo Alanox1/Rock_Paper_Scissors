@@ -1,7 +1,7 @@
 // console.log("HOLA");
 
 let elements = ["Rock","Paper","Scissors"]
-let elementUser = prompt("Rock,Paper or Scissors?")
+// let elementUser = prompt("Rock,Paper or Scissors?")
 
 
 function getComputerChoice(){
@@ -15,8 +15,8 @@ function singleRound(playerSelection,computerSelection){
   let player = playerSelection.toLowerCase()
   let computer = computerSelection.toLowerCase()
 
-  console.log(`Vos elegiste: ${player}`)
-  console.log(`La maquina eligió: ${computer}`);
+  // console.log(`Vos elegiste: ${player}`)
+  // console.log(`La maquina eligió: ${computer}`);
    if(player === computer) return "Empataron"
    
    if(player === "rock"){
@@ -39,4 +39,12 @@ function singleRound(playerSelection,computerSelection){
    }
  
 }
-console.log(singleRound(elementUser,getComputerChoice()))
+
+function game(){
+  for (let i = 0; i < 5; i++) {
+    console.log(singleRound("Rock",getComputerChoice()))
+    
+  }
+}
+// console.log(singleRound("Paper",getComputerChoice()))
+game()
