@@ -1,8 +1,9 @@
 // console.log("HOLA");
 
 let elements = ["Rock","Paper","Scissors"]
-// let elementUser = prompt("Rock,Paper or Scissors?")
 
+let pointsUser = 0;
+let pointsComputer = 0;
 
 function getComputerChoice(){
     const indiceAleatorio = Math.floor(Math.random() * elements.length);
@@ -12,39 +13,36 @@ function getComputerChoice(){
 
 
 function singleRound(playerSelection,computerSelection){
-  let player = playerSelection.toLowerCase()
-  let computer = computerSelection.toLowerCase()
-
-  // console.log(`Vos elegiste: ${player}`)
-  // console.log(`La maquina eligió: ${computer}`);
-   if(player === computer) return "Empataron"
-   
-   if(player === "rock"){
-     if(computer === "scissors") return "You Win!! rock beats scissors"
-     if(computer === "paper") return "You lose, paper beats rock"
-   }
-   
-
-   if(computer === "rock"){
-    if(player === "scissors") return "You lose, rock beats scissors"
-    if(player === "paper") return "You Win!!, paper beats rock"
+  let userChoice = playerSelection.toLowerCase()
+  let computerChoice = computerSelection.toLowerCase()
+ 
+  console.log("- - - - - - - -")
+  if (userChoice === computerChoice) {
+    return "it's a tie";
+  } else if (
+    (userChoice === "rock" && computerChoice === "scissors") ||
+    (userChoice === "scissors" && computerChoice === "paper") ||
+    (userChoice === "paper" && computerChoice === "rock")
+  ) {
+    pointsUser += 1
+    return `You Win!! ${userChoice} beats ${computerChoice}`;
+  } else {
+    pointsComputer += 1
+    return `You Lose, ${computerChoice} beats ${userChoice}`;
   }
-     
-   if(player === "scissors"){
-    if(computer === "paper") return "You win!! Scissors beats paper"
-   }
-
-   if(computer === "scissors"){
-    if(player === "paper") return "You lose, scissors beats paper"
-   }
  
 }
 
 function game(){
+  
   for (let i = 0; i < 5; i++) {
-    console.log(singleRound("Rock",getComputerChoice()))
+   
+    let elementUser = prompt("Rock,Paper or Scissors?")
+    console.log(singleRound(elementUser,getComputerChoice()))
     
   }
+
+  console.log(`User: ${pointsUser}, Computer: ${pointsComputer}`)
 }
-// console.log(singleRound("Paper",getComputerChoice()))
+
 game()
